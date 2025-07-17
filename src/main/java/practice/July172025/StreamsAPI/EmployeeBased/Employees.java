@@ -187,6 +187,15 @@ public class Employees {
                 .get();
     }
 
+    // employee with second highest salary
+    public static Employees employeeWithSecondHighestSalary() {
+        return getEmployeeList().stream()
+                .sorted(Comparator.comparingDouble(Employees::getSalary).reversed())
+                .skip(1)
+                .findFirst()
+                .get();
+    }
+
     public static void main(String[] args) {
         System.out.println(findTotalSize());
         System.out.println(sortAscending());
@@ -201,5 +210,6 @@ public class Employees {
         System.out.println(getHighestSalaryInAll());
         System.out.println(youngestEmployeeOfSpecificDept());
         System.out.println(emplyoeeWithMostExp());
+        System.out.println(employeeWithSecondHighestSalary());
     }
 }

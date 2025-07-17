@@ -1,10 +1,7 @@
 package practice.July172025.StreamsAPI;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class StreamsAPI {
 
@@ -34,13 +31,20 @@ public class StreamsAPI {
                 .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
     }
 
-
-
+    // find duplicates in a list
+    static void findDuplicate() {
+        List<Integer> list = List.of(1,2,3,4,5,6,1,2,3,1);
+        Set<Integer> set = new HashSet<>();
+        list.stream()
+                .filter(i -> !set.add(i))
+                .forEach(System.out::println);
+    }
 
     public static void main(String[] args) {
         System.out.println(groupLengthOfString());
         System.out.println();
         System.out.println(countStrings());
         System.out.println(countCharacters());
+        findDuplicate();
     }
 }
